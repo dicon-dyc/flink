@@ -9,8 +9,8 @@ import org.apache.flink.util.Collector;
 
 public class batchWordCount {
     public static void main(String[] args) throws Exception {
-        String inputPath = "C:\\Users\\13511\\Desktop\\TODO\\secretno";
-        String outputPath = "C:\\Users\\13511\\Desktop\\TODO\\secretno\\output";
+        String inputPath = "";
+        String outputPath = "";
 
         // 获取运行环境
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
