@@ -24,13 +24,13 @@ public class Mywordcount {
 
         //parse the data, group it, window it, and aggregate the counts
         DataStream<WordWithCount> windowCounts = text.flatMap(new FlatMapFunction<String, WordWithCount>() {
-            @Override
-            public void flatMap(String value, Collector<WordWithCount> out) throws Exception {
-                for (String word : value.split("\\s")){
-                    out.collect(new WordWithCount(word,1L));
-                }
-            }
-        })
+                    @Override
+                    public void flatMap(String value, Collector<WordWithCount> out) throws Exception {
+                        for (String word : value.split("\\s")){
+                            out.collect(new WordWithCount(word,1L));
+                        }
+                    }
+                })
                 .keyBy("word")
                 .timeWindow(Time.seconds(5),Time.seconds(1))
                 .reduce(new ReduceFunction<WordWithCount>() {
