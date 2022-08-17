@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: com.zyjk.dicon.flink.Flink_Kafka_Test.Flink_Kafka_test
+
