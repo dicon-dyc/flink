@@ -1,4 +1,4 @@
-package com.zyjk.dicon.flink.Flink_Kafka_Test;
+﻿package com.zyjk.dicon.flink.Flink_Kafka_Test;
 
 
 /**
@@ -6,6 +6,7 @@ package com.zyjk.dicon.flink.Flink_Kafka_Test;
  * date:2022-08-16
  * func:测试flink消费kafka数据
  */
+
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
