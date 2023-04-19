@@ -65,7 +65,7 @@ public class streamOperators {
          *
          */
 
-        DataStream<String> resultData = streamSource.keyBy().
+        //DataStream<String> resultData = streamSource.keyBy().
 
         /**
          * Reduce:被Keys化数据流上的“滚动”Reduce。将当前数据元与最后一个Reduce的值组合并发出新值
@@ -74,7 +74,7 @@ public class streamOperators {
 
 
         //TODO 输入
-        resultData.print();
+        //resultData.print();
         env.execute();
 
 
