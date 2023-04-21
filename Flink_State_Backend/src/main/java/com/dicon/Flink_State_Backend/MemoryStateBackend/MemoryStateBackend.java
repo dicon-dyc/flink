@@ -52,20 +52,25 @@ public class MemoryStateBackend {
                 .sum(1);
 
         //TODO 输出
-//        resultDataStream.addSink(JdbcSink.sink(
-//                "Insert INTO MemoryWordCount (words,counts) VALUES(?,?)",
-//                (preparedStatement, stringIntegerTuple2) -> {
-//                    preparedStatement.setString(1,stringIntegerTuple2.f0);
-//                },
-//                JdbcExecutionOptions.builder()
-//                        .withBatchIntervalMs(200)
-//                        .withBatchSize(1000)
-//                        .withMaxRetries(5)
-//                        .build(),
-//                new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
-//                        .withUrl("jdbc:mysql://")
-//        ))
-        resultDataStream.print();
+        resultDataStream.addSink(JdbcSink.sink(
+                "Insert INTO MemoryWordCount (words,counts) VALUES(?,?)",
+                (preparedStatement, stringIntegerTuple2) -> {
+                    preparedStatement.setString(1,stringIntegerTuple2.f0);
+                },
+                JdbcExecutionOptions.builder()
+                        .withBatchIntervalMs(200)
+                        .withBatchSize(1000)
+                        .withMaxRetries(5)
+                        .build(),
+                new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
+                        .withUrl("jdbc:mysql://192.168.16.218:3306/flink")
+                        .withUsername("root")
+                        .withPassword("123456")
+                        .build()
+        ));
+
+
+//        resultDataStream.print();
 
         env.execute();
 
