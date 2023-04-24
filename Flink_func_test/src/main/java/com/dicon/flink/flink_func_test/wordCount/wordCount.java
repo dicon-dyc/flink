@@ -23,10 +23,10 @@ public class wordCount {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         //TODO 配置source，读取数据
-        DataStreamSource streamSource = env.socketTextStream("192.168.245.141",9999);
+        DataStreamSource streamSource = env.socketTextStream("192.168.56.104",9999);
 
         //TODO 计算
-        DataStream<Tuple2<String,Integer>> resultStream = streamSource.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
+        DataStream<Tuple2<String,Integer>> resultStream = streamSource.filter(x -> !x.equals("flink")).flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
             @Override
             public void flatMap(String words, Collector collector) throws Exception {
                 for (String word : words.split(" ")) {

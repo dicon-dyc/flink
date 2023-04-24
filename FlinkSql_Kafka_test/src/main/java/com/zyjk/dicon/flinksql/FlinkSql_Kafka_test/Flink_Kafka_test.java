@@ -14,7 +14,7 @@ public class Flink_Kafka_test {
         StreamTableEnvironment tableEnvironment = StreamTableEnvironment.create(bsEnv, bsSettings);
 
         //flinksql
-        String Table_Create = "CREATE TABLE Flink_test_table()"
+        String Table_Create = "CREATE TABLE Flink_test_table()";
 
         //https://blog.csdn.net/qq_31963719/article/details/120058761
     }
