@@ -37,7 +37,7 @@ public class MemoryStateBackend {
         env.setStateBackend(new org.apache.flink.runtime.state.memory.MemoryStateBackend());
 
         //TODO 配置source并读取
-        DataStreamSource<String> dataStreamSource = env.socketTextStream("192.168.56.102",9999);
+        DataStreamSource<String> dataStreamSource = env.socketTextStream("192.168.56.104",9999);
 
         //TODO 计算
         DataStream<Tuple2<String,Integer>> resultDataStream = dataStreamSource.flatMap(new FlatMapFunction<String, Tuple2<String,Integer>>() {

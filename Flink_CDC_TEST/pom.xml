@@ -20,8 +20,8 @@ under the License.
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.example</groupId>
-	<artifactId>Flink_Window_Test</artifactId>
+	<groupId>com.dicon</groupId>
+	<artifactId>Flink_CDC_TEST</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -56,38 +56,58 @@ under the License.
 		<!-- These dependencies are provided, because they should not be packaged into the JAR file. -->
 		<dependency>
 			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-clients_2.12</artifactId>
-			<version>1.14.4</version>
+			<artifactId>flink-clients_2.11</artifactId>
+			<version>${flink.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-java</artifactId>
 			<version>${flink.version}</version>
-
+<!--			<scope>provided</scope>-->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
 			<version>${flink.version}</version>
-
+<!--			<scope>provided</scope>-->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-clients_${scala.binary.version}</artifactId>
 			<version>${flink.version}</version>
-
+<!--			<scope>provided</scope>-->
 		</dependency>
 
 		<!-- Add connector dependencies here. They must be in the default scope (compile). -->
 
-		<!-- Example:
+		<dependency>
+			<groupId>com.ververica</groupId>
+			<artifactId>flink-sql-connector-mysql-cdc</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.83</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-connector-kafka_${scala.binary.version}</artifactId>
 			<version>${flink.version}</version>
 		</dependency>
-		-->
+		<dependency>
+			<groupId>com.ververica</groupId>
+			<artifactId>flink-connector-mysql-cdc</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-json</artifactId>
+			<version>1.14.4</version>
+		</dependency>
+
 
 		<!-- Add logging framework, to produce console output when running in the IDE. -->
 		<!-- These dependencies are excluded from the application JAR by default. -->
@@ -108,11 +128,6 @@ under the License.
 			<artifactId>log4j-core</artifactId>
 			<version>${log4j.version}</version>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.83</version>
 		</dependency>
 	</dependencies>
 
@@ -166,7 +181,7 @@ under the License.
 							</filters>
 							<transformers>
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.dicon.flink.flink_window_test.StreamingJob</mainClass>
+									<mainClass>com.dicon.StreamingJob</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

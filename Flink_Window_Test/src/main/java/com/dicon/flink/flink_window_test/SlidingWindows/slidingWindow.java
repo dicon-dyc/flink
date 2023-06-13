@@ -1,5 +1,6 @@
 package com.dicon.flink.flink_window_test.SlidingWindows;
 
+import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 
 import org.apache.flink.api.java.tuple.Tuple2;
@@ -25,6 +26,7 @@ public class slidingWindow {
 
         //TODO 添加source
         DataStreamSource<String> dataStreamSource = env.socketTextStream("192.168.56.104",9999);
+
 
         //TODO transform
         SingleOutputStreamOperator<Tuple2<String, Integer>> sum = dataStreamSource.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
