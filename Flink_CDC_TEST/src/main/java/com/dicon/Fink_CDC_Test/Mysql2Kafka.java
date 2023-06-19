@@ -64,6 +64,7 @@ public class Mysql2Kafka {
         SingleOutputStreamOperator<MsgInfo> process = dataStreamSource.map(new MapFunction<String, MsgInfo>() {
             @Override
             public MsgInfo map(String s) throws Exception {
+                System.out.println("---------------------"+s);
                 JSONObject jsonObject = JSON.parseObject(s);
                 String data = jsonObject.getString("after");
                 JSONObject jsonObject1 = JSON.parseObject(data);
