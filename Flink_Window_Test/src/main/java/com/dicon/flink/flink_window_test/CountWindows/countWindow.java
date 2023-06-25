@@ -24,6 +24,7 @@ public class countWindow {
         //TODO 添加source
         DataStreamSource<String> dataStreamSource = env.socketTextStream("192.168.56.104",9999);
 
+
         //TODO transform
         SingleOutputStreamOperator<Tuple2<String, Integer>> sum = dataStreamSource.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
                     @Override
